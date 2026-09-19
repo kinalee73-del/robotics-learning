@@ -1,0 +1,46 @@
+const int JOY_X = A0;
+const int JOY_Y = A1;
+
+const int CENTER_X = 351;
+const int CENTER_Y = 350;
+
+const int DEADZONE = 50;
+
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+
+  int x = analogRead(JOY_X);
+  int y = analogRead(JOY_Y);
+
+  String command;
+
+  if (y < CENTER_Y - DEADZONE) {
+    command = "FORWARD";
+  }
+  else if (y > CENTER_Y + DEADZONE) {
+    command = "BACKWARD";
+  }
+  else if (x < CENTER_X - DEADZONE) {
+    command = "LEFT";
+  }
+  else if (x > CENTER_X + DEADZONE) {
+    command = "RIGHT";
+  }
+  else {
+    command = "STOP";
+  }
+
+  Serial.print("X=");
+  Serial.print(x);
+
+  Serial.print(" Y=");
+  Serial.print(y);
+
+  Serial.print(" -> ");
+  Serial.println(command);
+
+  delay(100);
+}
