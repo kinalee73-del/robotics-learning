@@ -1,0 +1,54 @@
+const int JOY_X = A0;
+const int JOY_Y = A1;
+const int JOY_BUTTON = 8;
+
+const int BUTTON_A = 2;
+const int BUTTON_B = 3;
+const int BUTTON_C = 4;
+const int BUTTON_D = 5;
+const int BUTTON_E = 6;
+const int BUTTON_F = 7;
+
+void setup() {
+  Serial.begin(9600);
+
+  pinMode(JOY_BUTTON, INPUT_PULLUP);
+
+  pinMode(BUTTON_A, INPUT_PULLUP);
+  pinMode(BUTTON_B, INPUT_PULLUP);
+  pinMode(BUTTON_C, INPUT_PULLUP);
+  pinMode(BUTTON_D, INPUT_PULLUP);
+  pinMode(BUTTON_E, INPUT_PULLUP);
+  pinMode(BUTTON_F, INPUT_PULLUP);
+}
+
+void loop() {
+  Serial.print("X: ");
+  Serial.print(analogRead(JOY_X));
+
+  Serial.print(" | Y: ");
+  Serial.print(analogRead(JOY_Y));
+
+  Serial.print(" | K: ");
+  Serial.print(digitalRead(JOY_BUTTON));
+
+  Serial.print(" | A: ");
+  Serial.print(digitalRead(BUTTON_A));
+
+  Serial.print(" | B: ");
+  Serial.print(digitalRead(BUTTON_B));
+
+  Serial.print(" | C: ");
+  Serial.print(digitalRead(BUTTON_C));
+
+  Serial.print(" | D: ");
+  Serial.print(digitalRead(BUTTON_D));
+
+  Serial.print(" | E: ");
+  Serial.print(digitalRead(BUTTON_E));
+
+  Serial.print(" | F: ");
+  Serial.println(digitalRead(BUTTON_F));
+
+  delay(100);
+}
